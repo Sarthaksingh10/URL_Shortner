@@ -18,11 +18,10 @@ const handleGenereateShortUrl = async (req, res) => {
 const handleGetURL = async (req, res) => {
   const shortId = req.params.shortID;
   console.log("hello1", shortId);
-  console.log("hello2", req);
-  console.log("hello4", URL.findOneAndUpdate);
+
   const entry = await URL.findOneAndUpdate(
     {
-      shortId,
+      ShortId: shortId,
     },
     {
       $push: {
@@ -32,7 +31,7 @@ const handleGetURL = async (req, res) => {
       },
     }
   );
-  console.log(shortId);
+
   console.log("hello3", entry);
   res.redirect(entry.RedirectUrl);
 };
